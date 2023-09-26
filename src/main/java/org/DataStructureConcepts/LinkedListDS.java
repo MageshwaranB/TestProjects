@@ -1,5 +1,6 @@
 package org.DataStructureConcepts;
 
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
 public class LinkedListDS {
@@ -140,6 +141,7 @@ public class LinkedListDS {
         System.out.println(linkedListDS.indexOf(10));
         System.out.println(linkedListDS.contains(5));
         linkedListDS.removeFirst();
+        linkedListDS.removeLast();
     }
 
 
