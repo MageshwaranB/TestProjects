@@ -1,6 +1,7 @@
 package org.DataStructureConcepts;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class ArraysDS {
     /*
@@ -72,6 +73,25 @@ public class ArraysDS {
         return -1;
     }
 
+    private static void print2DArray(int[][] arr){
+        int rows=arr.length;
+        int cols=arr[0].length;
+        for (int i = 0; i < rows; i++) {
+            for (int j=0;j<cols;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    private static int getSum(int[] array){
+        int sum=0;
+        for (int value:array){
+            sum=sum+value;
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         ArraysDS arraysDS=new ArraysDS(3);
         arraysDS.insert(2);
@@ -83,6 +103,38 @@ public class ArraysDS {
         arraysDS.print();
         arraysDS.insert(8);
         System.out.println(arraysDS.searchTheElement(8));
+
+        //2 Dimensional array
+        int[][] arr={{1,3,5,100},{2,4,6,200},{1,3,6,10}};
+        //to get the data from the two dimensional array, we will use deepToString method
+        System.out.println(Arrays.deepToString(arr));
+        print2DArray(arr);
+
+        //Sorting the 2D array using inbuilt function
+        Arrays.sort(arr,(int[] o1, int[] o2) -> (getSum(o1)-(getSum(o2)))); //based on the total sum of individual array
+        System.out.println(Arrays.deepToString(arr));
+        Arrays.sort(arr,(int[] o1,int[] o2)->o1[o1.length-1]-o2[o2.length-1]);//Based on the last element of each individual array
+        System.out.println(Arrays.deepToString(arr));
+        jaggedArrayExample();
+    }
+
+    private static void jaggedArrayExample(){
+        //Jagged Array : with varying no of columns in a row
+        System.out.println("Enter the total row");
+        Scanner scanner=new Scanner(System.in);
+        int row=scanner.nextInt();
+        int[][] arr=new int[row][];
+
+        for (int i=0;i<row;i++){
+            System.out.println("Enter the cols to be present in row "+(1+i));
+            int cols=scanner.nextInt();
+            System.out.println("Enter the data in the current row");
+            arr[i]=new int[cols];
+            for (int j=0;j<cols;j++){
+                arr[i][j]=scanner.nextInt();
+            }
+        }
+        System.out.println(Arrays.deepToString(arr));
     }
 
 
